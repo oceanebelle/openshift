@@ -103,7 +103,7 @@
 
     <profiles>
         <profile>
-            <id>local</id>
+            <id>local-crc</id>
             <properties>
                 <docker.registry>default-route-openshift-image-registry.apps-crc.testing</docker.registry>
                 <openshift.project>my-project-local</openshift.project>
@@ -111,14 +111,14 @@
             </properties>
         </profile>
         <profile>
-            <id>dockerhub</id>
+            <id>docker-hub</id>
             <properties>
                 <openshift.project>oceanebelle</openshift.project>
                 <docker.skip.push>false</docker.skip.push>
             </properties>
         </profile>
         <profile>
-            <id>push-image</id>
+            <id>push</id>
             <properties>
                 <docker.skip.push>false</docker.skip.push>
             </properties>
