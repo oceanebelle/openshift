@@ -3,6 +3,7 @@ This is a repo on experiments on OpenShift using RedHat's Code Ready Containers
 
 To prepare CRC on ubuntu. Use ubuntuansible repo.
 
+
 ## To push a docker images to openshift/crc registry
 1. Create a project eg
  
@@ -14,4 +15,8 @@ To prepare CRC on ubuntu. Use ubuntuansible repo.
 
 3. Build maven
     
-    ``mvn clean install -Plocal``     
+    ``mvn clean install -Plocal``   
+    
+    
+## Caveats
+- Spring boot dependency is imported and bom is not the parent, hence copied most of the plugins from the bom      
