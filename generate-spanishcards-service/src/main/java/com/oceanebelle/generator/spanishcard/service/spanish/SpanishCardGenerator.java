@@ -1,8 +1,6 @@
 package com.oceanebelle.generator.spanishcard.service.spanish;
 
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
 
 public interface SpanishCardGenerator {
     public final static Integer HIGH = 1;
