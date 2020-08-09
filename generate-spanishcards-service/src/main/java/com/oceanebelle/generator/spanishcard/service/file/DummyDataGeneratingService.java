@@ -1,4 +1,4 @@
-package com.oceanebelle.generator.spanishcard.service;
+package com.oceanebelle.generator.spanishcard.service.file;
 
 import java.io.IOException;
 import java.io.InputStream;

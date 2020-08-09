@@ -1,4 +1,4 @@
-package com.oceanebelle.generator.spanishcard.service;
+package com.oceanebelle.generator.spanishcard.service.file;
 
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j2;
@@ -9,17 +9,18 @@ import java.io.*;
 import java.nio.charset.StandardCharsets;
 import java.time.Duration;
 import java.time.Instant;
-import java.time.Period;
-import java.time.temporal.TemporalUnit;
 import java.util.concurrent.ExecutorService;
 
 @Service
-@AllArgsConstructor
 @Log4j2
 public class DefaultDummyDataGeneratingService implements DummyDataGeneratingService {
 
-    @Qualifier("dummyExecutor")
-    private ExecutorService executorService;
+
+    private final ExecutorService executorService;
+
+    public DefaultDummyDataGeneratingService(@Qualifier("dummyExecutor") ExecutorService executorService) {
+        this.executorService = executorService;
+    }
 
     @Override
     public InputStream write(int sizeInMb) throws IOException {

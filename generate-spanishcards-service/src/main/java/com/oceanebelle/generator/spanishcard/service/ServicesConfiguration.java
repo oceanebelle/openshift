@@ -14,6 +14,15 @@ public class ServicesConfiguration {
     ExecutorService dummyExecutorService() {
         var factory = Executors.defaultThreadFactory();
 
+        ExecutorService executor = Executors.newFixedThreadPool(1, factory);
+
+        return executor;
+    }
+
+    @Bean @Qualifier("spanishExecutor")
+    ExecutorService spanishExecutor() {
+        var factory = Executors.defaultThreadFactory();
+
         ExecutorService executor = Executors.newFixedThreadPool(5, factory);
 
         return executor;
