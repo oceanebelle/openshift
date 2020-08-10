@@ -2,6 +2,8 @@ package com.oceanebelle.generator.spanishcard.service.spanish;
 
 import com.oceanebelle.generator.spanishcard.database.Conjugation;
 import com.oceanebelle.generator.spanishcard.database.ConjugationRepository;
+import io.micrometer.core.annotation.Counted;
+import io.micrometer.core.annotation.Timed;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -13,6 +15,8 @@ import java.util.function.Supplier;
 public class ConjugationService {
     private ConjugationRepository conjugationRepository;
 
+
+    @Timed @Counted
     @Transactional
     public String conjugate(SpanishCardGenerator.Voice voice, String verb, Conjugation.ConjugationType type, Supplier<String> fallback) {
         return conjugationRepository.findByIdAndType(verb, type)
