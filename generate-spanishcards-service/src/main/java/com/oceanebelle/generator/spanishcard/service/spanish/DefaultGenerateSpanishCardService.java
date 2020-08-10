@@ -26,7 +26,7 @@ public class DefaultGenerateSpanishCardService implements GenerateSpanishCardSer
     }
 
     @Override
-    public InputStream writeCards(String verb, String word, String subject) throws IOException {
+    public InputStream writeCards(String verb, String subject) throws IOException {
 
         SpanishCardGenerator generator = factory.getGeneratorFor(verb);
 
@@ -34,7 +34,7 @@ public class DefaultGenerateSpanishCardService implements GenerateSpanishCardSer
         PipedOutputStream source = new PipedOutputStream();
         source.connect(sink);
 
-        SpanishTask task = new SpanishTask(generator, source, verb, word, subject);
+        SpanishTask task = new SpanishTask(generator, source, verb, subject);
         executorService.submit(task);
 
         return sink;

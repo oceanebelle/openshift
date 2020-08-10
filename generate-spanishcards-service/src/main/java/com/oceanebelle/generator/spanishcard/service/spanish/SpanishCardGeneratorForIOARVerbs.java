@@ -26,11 +26,11 @@ public class SpanishCardGeneratorForIOARVerbs implements SpanishCardGenerator {
     }
 
     @Override
-    public void printCard(String verb, String word, String subject, WriteCard card) throws IOException {
-        card.write("I *" + wordService.pluralEnFor(word)  + "* " + subject,
+    public void printCard(String verb, String subject, WriteCard card) {
+        card.write("I *" + wordService.pluralEnFor(verb)  + "* " + subject,
                 "*" + FIRST.io() + " " + presentAR(verb, THIRD_MALE) + "* " + wordService.singleEsFor(subject));
 
-        card.write("I *" + wordService.pluralEnFor(word)  + "* " + wordService.pluralEnFor(subject),
+        card.write("I *" + wordService.pluralEnFor(verb)  + "* " + wordService.pluralEnFor(subject),
                 "*" + FIRST.io() + " " + presentAR(verb, THIRD_PL_MALE) + "* " + wordService.pluralEsFor(subject));
     }
 }

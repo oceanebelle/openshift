@@ -5,5 +5,5 @@ import java.io.IOException;
 import java.io.InputStream;
 
 public interface GenerateSpanishCardService {
-    InputStream writeCards(String verb, String word, String subject) throws IOException;
+    InputStream writeCards(String verb, String subject) throws IOException;
 }

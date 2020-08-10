@@ -11,7 +11,7 @@ public interface SpanishCardGenerator {
     Integer getOrder();
 
 
-    void printCard(String verb, String word, String subject, WriteCard card) throws IOException;
+    void printCard(String verb, String subject, WriteCard card) throws IOException;
 
     enum Voice {
         /**
@@ -106,6 +106,28 @@ public interface SpanishCardGenerator {
         }
     }
 
+    default String pastERAndIR(String verb, Voice voice) {
+        switch(voice) {
+            default:
+            case FIRST:
+                return verbRootWithSuffix(verb, "í");
+            case SECOND:
+                return verbRootWithSuffix(verb, "iste");
+            case THIRD_MALE:
+            case THIRD_FEMALE:
+            case THIRD_FORMAL:
+                return verbRootWithSuffix(verb, "ió");
+            case FIRST_PLURAL:
+                return verbRootWithSuffix(verb, "imos");
+            case SECOND_PLURAL:
+                return verbRootWithSuffix(verb, "isteis");
+            case THIRD_PL_FEMALE:
+            case THIRD_PL_MALE:
+            case THIRD_PL_FORMAL:
+                return verbRootWithSuffix(verb, "ieron");
+        }
+    }
+
     /**
      * The Spanish imperfect tense (el pretérito
      * imperfecto
@@ -134,28 +156,6 @@ public interface SpanishCardGenerator {
             case THIRD_PL_MALE:
             case THIRD_PL_FORMAL:
                 return verbRootWithSuffix(verb, "aban");
-        }
-    }
-
-    default String pastERAndIR(String verb, Voice voice) {
-        switch(voice) {
-            default:
-            case FIRST:
-                return verbRootWithSuffix(verb, "í");
-            case SECOND:
-                return verbRootWithSuffix(verb, "iste");
-            case THIRD_MALE:
-            case THIRD_FEMALE:
-            case THIRD_FORMAL:
-                return verbRootWithSuffix(verb, "ió");
-            case FIRST_PLURAL:
-                return verbRootWithSuffix(verb, "imos");
-            case SECOND_PLURAL:
-                return verbRootWithSuffix(verb, "isteis");
-            case THIRD_PL_FEMALE:
-            case THIRD_PL_MALE:
-            case THIRD_PL_FORMAL:
-                return verbRootWithSuffix(verb, "ieron");
         }
     }
 
@@ -222,6 +222,50 @@ public interface SpanishCardGenerator {
             case THIRD_PL_MALE:
             case THIRD_PL_FORMAL:
                 return verbRootWithSuffix(verb, "en");
+        }
+    }
+
+    default String conditionalAll(String verb, Voice voice) {
+        switch(voice) {
+            default:
+            case FIRST:
+                return verb + "ía";
+            case SECOND:
+                return verb + "ías";
+            case THIRD_MALE:
+            case THIRD_FEMALE:
+            case THIRD_FORMAL:
+                return verb + "ía";
+            case FIRST_PLURAL:
+                return verb + "íamos";
+            case SECOND_PLURAL:
+                return verb + "íais";
+            case THIRD_PL_FEMALE:
+            case THIRD_PL_MALE:
+            case THIRD_PL_FORMAL:
+                return verb + "ían";
+        }
+    }
+
+    default String futureAll(String verb, Voice voice) {
+        switch(voice) {
+            default:
+            case FIRST:
+                return verb + "é";
+            case SECOND:
+                return verb + "ás";
+            case THIRD_MALE:
+            case THIRD_FEMALE:
+            case THIRD_FORMAL:
+                return verb + "á";
+            case FIRST_PLURAL:
+                return verb + "emos";
+            case SECOND_PLURAL:
+                return verb + "éis";
+            case THIRD_PL_FEMALE:
+            case THIRD_PL_MALE:
+            case THIRD_PL_FORMAL:
+                return verb + "án";
         }
     }
 

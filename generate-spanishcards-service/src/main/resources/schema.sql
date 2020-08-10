@@ -10,3 +10,17 @@ CREATE TABLE word (
   es_plural VARCHAR(100),
   type VARCHAR(50)
 );
+
+DROP TABLE IF EXISTS conjugation;
+
+CREATE TABLE conjugation (
+  id VARCHAR(30) NOT NULL,
+  type VARCHAR(50) ,
+  first VARCHAR(100),
+  second VARCHAR(100),
+  third VARCHAR(100),
+  first_plural VARCHAR(100),
+  second_plural VARCHAR(100),
+  third_plural VARCHAR(100),
+  FOREIGN KEY (id) REFERENCES word(id)
+);

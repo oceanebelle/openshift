@@ -14,13 +14,12 @@ class SpanishTask implements Runnable {
     private SpanishCardGenerator generator;
     private OutputStream output;
     private String verb;
-    private String word;
     private String subject;
 
     @Override
     public void run() {
         try(final var source = new BufferedOutputStream(output, 1024)) {
-            generator.printCard(verb, word, subject, (en, es) -> {
+            generator.printCard(verb, subject, (en, es) -> {
                 StringBuilder sb = new StringBuilder();
                 sb.append(en);
                 sb.append(",");
@@ -33,7 +32,7 @@ class SpanishTask implements Runnable {
                 }
             });
             source.flush();
-        } catch (IOException e) {
+        } catch (Exception e) {
             log.error("Failed writing task", e);
         }
     }
