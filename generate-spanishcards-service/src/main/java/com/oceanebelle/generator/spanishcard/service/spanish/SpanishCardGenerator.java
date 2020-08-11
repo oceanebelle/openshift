@@ -3,8 +3,8 @@ package com.oceanebelle.generator.spanishcard.service.spanish;
 import java.io.IOException;
 
 public interface SpanishCardGenerator {
-    public final static Integer HIGH = 1;
-    public final static Integer LOW = 10;
+    Integer HIGH = 1;
+    Integer LOW = 10;
 
     SpanishVerbTypeFilter getVerbFilter();
 
@@ -50,6 +50,9 @@ public interface SpanishCardGenerator {
             this.io = io;
         }
 
+        /**
+         * Personal Subject Pronoun
+         */
         public String sub() {
             return sub;
         }

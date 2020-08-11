@@ -8,7 +8,9 @@ CREATE TABLE word (
   ing VARCHAR(100),
   es_single VARCHAR(100),
   es_plural VARCHAR(100),
-  type VARCHAR(50)
+  subject VARCHAR(100),
+  type VARCHAR(50),
+  FOREIGN KEY (subject) REFERENCES word(id)
 );
 
 DROP TABLE IF EXISTS conjugation;

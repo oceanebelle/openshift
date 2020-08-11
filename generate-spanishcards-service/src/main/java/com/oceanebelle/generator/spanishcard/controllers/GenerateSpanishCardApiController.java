@@ -15,6 +15,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @RestController
@@ -63,7 +64,7 @@ public class GenerateSpanishCardApiController {
 
         data.computeIfAbsent("urls", x -> wordService.getVerbs()
                 .stream()
-                .map(s -> new Data(s.getValue(), "/api/v1/cards/" + s.getKey() + "/" + subject))
+                .map(s -> new Data(s.getEnWord(), "/api/v1/cards/" + s.getEsWord() + "/" + Optional.ofNullable(s.getSubject()).orElse(subject)))
                 .collect(Collectors.toList()));
 
         return ResponseEntity.ok()

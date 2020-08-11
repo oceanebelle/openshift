@@ -3,7 +3,6 @@ package com.oceanebelle.generator.spanishcard.service.spanish;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Component;
 
-import java.io.IOException;
 import java.util.Arrays;
 
 import static com.oceanebelle.generator.spanishcard.service.spanish.SpanishCardGenerator.Voice.*;

@@ -26,6 +26,8 @@ public class Word {
     @Enumerated(EnumType.STRING)
     private WordType type;
 
+    private String subject;
+
     public enum WordType {
         VERB
     }

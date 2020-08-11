@@ -3,6 +3,7 @@ package com.oceanebelle.generator.spanishcard.service.spanish;
 import com.oceanebelle.generator.spanishcard.database.Word;
 import com.oceanebelle.generator.spanishcard.database.WordRepository;
 import lombok.AllArgsConstructor;
+import lombok.Getter;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -17,9 +18,9 @@ public class WordService {
     private WordRepository wordRepository;
 
     @Transactional
-    public List<Map.Entry<String, String>> getVerbs() {
+    public List<VerbInfo> getVerbs() {
         return wordRepository.findAllByType(Word.WordType.VERB)
-                .map(x -> new AbstractMap.SimpleImmutableEntry<>(x.getId(), x.getEnSingle()))
+                .map(x -> new VerbInfo(x.getId(), x.getEnSingle(), x.getSubject()))
                 .collect(Collectors.toList());
     }
 
@@ -45,5 +46,13 @@ public class WordService {
 
     public String pastEnFor(String word) {
         return wordRepository.findById(word).map(x -> x.getEnPast()).orElse(word);
+    }
+
+    @AllArgsConstructor
+    @Getter
+    public static class VerbInfo {
+        private String esWord;
+        private String enWord;
+        private String subject;
     }
 }

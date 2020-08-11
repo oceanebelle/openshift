@@ -23,7 +23,7 @@ public class DefaultSpanishCardFactory implements SpanishCardFactory {
         return cards.stream()
                 .filter(c -> c.getVerbFilter().test(verb))
                 .sorted(Comparator.comparingInt(x -> x.getOrder()))
-                .findFirst().orElseThrow(() -> new IllegalStateException("Unsupported verb" + verb));
+                .findFirst().orElseThrow(() -> new IllegalStateException("Unsupported verb " + verb));
     }
 
 }

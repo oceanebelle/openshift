@@ -3,7 +3,7 @@ package com.oceanebelle.generator.spanishcard.service.spanish;
 import org.springframework.stereotype.Component;
 
 @Component
-public class SpanishCardGeneratorForIRVerbs extends GenericVerbSpanishCardGenerator {
+public class SpanishCardGeneratorForIRVerbs extends SpanishCardGeneratorForRegularVerbs {
 
     public SpanishCardGeneratorForIRVerbs(WordService words) {
         super(words);

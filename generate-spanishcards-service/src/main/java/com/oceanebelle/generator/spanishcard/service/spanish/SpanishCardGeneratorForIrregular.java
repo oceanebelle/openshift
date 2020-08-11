@@ -4,13 +4,10 @@ import com.oceanebelle.generator.spanishcard.database.Conjugation;
 import org.springframework.stereotype.Component;
 
 import java.util.Arrays;
-import java.util.Map;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 
 @Component
-public class SpanishCardGeneratorForIrregular extends GenericVerbSpanishCardGenerator {
+public class SpanishCardGeneratorForIrregular extends SpanishCardGeneratorForRegularVerbs {
 
     private final ConjugationService conjugate;
 
@@ -22,9 +19,9 @@ public class SpanishCardGeneratorForIrregular extends GenericVerbSpanishCardGene
     @Override
     public SpanishVerbTypeFilter getVerbFilter() {
         return new EqualsSpanishVerbTypeFilter(Arrays.asList(
-                "DECIR", "DAR", "IR",
-                "SER", "TENER", "HACER",
-                "PODER"));
+                "IR",
+                "DECIR", "DAR", "TENER",
+                "HACER", "PODER"));
     }
 
     @Override

@@ -4,7 +4,7 @@ import org.springframework.stereotype.Component;
 
 
 @Component
-public class SpanishCardGeneratorForARVerbs extends GenericVerbSpanishCardGenerator {
+public class SpanishCardGeneratorForARVerbs extends SpanishCardGeneratorForRegularVerbs {
 
     public SpanishCardGeneratorForARVerbs(WordService words) {
         super(words);
