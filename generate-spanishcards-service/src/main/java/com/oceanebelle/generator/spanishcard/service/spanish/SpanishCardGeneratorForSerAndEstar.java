@@ -10,7 +10,7 @@ import static com.oceanebelle.generator.spanishcard.service.spanish.SpanishCardG
 @Component
 public class SpanishCardGeneratorForSerAndEstar extends SpanishCardGeneratorForIrregular {
 
-    public SpanishCardGeneratorForSerAndEstar(WordService words, ConjugationService conjugationService) {
+    public SpanishCardGeneratorForSerAndEstar(WordService words, SpanishConjugationService conjugationService) {
         super(words, conjugationService);
     }
 

@@ -11,6 +11,11 @@ public abstract class SpanishCardGeneratorForRegularVerbs implements SpanishCard
     }
 
     @Override
+    public Integer getOrder() {
+        return SpanishCardGenerator.LOW;
+    }
+
+    @Override
     public void printCard(String verb, String subject, WriteCard card) {
 
         writePresent(verb, subject, card);

@@ -15,10 +15,7 @@ public class SpanishCardGeneratorForARVerbs extends SpanishCardGeneratorForRegul
         return new EndsWithSpanishVerbTypeFilter("AR");
     }
 
-    @Override
-    public Integer getOrder() {
-        return SpanishCardGenerator.LOW;
-    }
+
 
     protected String present(Voice voice, String verb) {
         return presentAR(verb, voice);

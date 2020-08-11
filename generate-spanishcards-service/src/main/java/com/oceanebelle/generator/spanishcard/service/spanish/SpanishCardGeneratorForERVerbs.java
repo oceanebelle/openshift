@@ -14,11 +14,6 @@ public class SpanishCardGeneratorForERVerbs extends SpanishCardGeneratorForRegul
         return new EndsWithSpanishVerbTypeFilter("ER");
     }
 
-    @Override
-    public Integer getOrder() {
-        return SpanishCardGenerator.LOW;
-    }
-
     protected String present(Voice voice, String verb) {
         return presentER(verb, voice);
     }

@@ -8,11 +8,13 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.util.List;
 import java.util.function.Supplier;
+import java.util.stream.Stream;
 
 @Service
 @AllArgsConstructor
-public class ConjugationService {
+public class SpanishConjugationService {
     private ConjugationRepository conjugationRepository;
 
 
@@ -20,14 +22,20 @@ public class ConjugationService {
     @Transactional
     public String conjugate(SpanishCardGenerator.Voice voice, String verb, Conjugation.ConjugationType type, Supplier<String> fallback) {
         return conjugationRepository.findByIdAndType(verb, type)
-                .map(c -> asVoice(c, voice))
+                .flatMap(c -> Stream.ofNullable(asVoice(c, voice)))
                 .findFirst()
                 .orElseGet(fallback);
+    }
+
+    @Counted
+    public List<String> getIrregularVerbs() {
+        return conjugationRepository.findDistinctById();
     }
 
     private static String asVoice(Conjugation conjugation, SpanishCardGenerator.Voice voice) {
         switch(voice) {
             default:
+                return null;
             case FIRST:
                 return conjugation.getFirst();
             case SECOND:

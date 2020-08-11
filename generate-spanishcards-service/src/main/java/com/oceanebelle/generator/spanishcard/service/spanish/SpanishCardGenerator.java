@@ -4,6 +4,7 @@ import java.io.IOException;
 
 public interface SpanishCardGenerator {
     Integer HIGH = 1;
+    Integer MEDIUM = 5;
     Integer LOW = 10;
 
     SpanishVerbTypeFilter getVerbFilter();
