@@ -77,7 +77,7 @@
                                         </dependencySets>
                                         <fileSets>
                                             <fileSet>
-                                                <directory>${project.basedir}/src/main/docker/__files</directory>
+                                                <directory>${project.basedir}/src/main/resources/__files</directory>
                                                 <outputDirectory>__files</outputDirectory>
                                                 <filtered>false</filtered>
                                                 <fileMode>755</fileMode>

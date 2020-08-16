@@ -20,11 +20,14 @@ import static com.github.tomakehurst.wiremock.client.WireMock.urlEqualTo;
 @Log4j2
 public class MyServiceMocks implements InitializingBean {
 
+    private static final String STARTED = "Started"; // Wiremock begin state
+
     private WireMockServer mockServer;
     @Override
     public void afterPropertiesSet() throws Exception {
 
         log.info("Mocked the echo service");
+        // See Wiremock pages for more involved test cases
         configureFor("localhost", mockServer.port());
         stubFor(get(urlEqualTo("/echo"))
             .willReturn(
@@ -32,8 +35,30 @@ public class MyServiceMocks implements InitializingBean {
                             .withHeader("Content-Type","application/json")
                             .withStatus(200)
                             .withBodyFile("echo.json")
-                            //.withBody("{\"hello\" : \"echo\"}").withTransformers())
                     ));
+
+        // fetch /__admin/scenarios
+        stubFor(get(urlEqualTo("/authorize?id=1000"))
+                .inScenario("SCENARIO-VALID-USER")
+                .whenScenarioStateIs(STARTED)
+                .willReturn(
+                        aResponse()
+                                .withHeader("Content-Type","application/json")
+                                .withStatus(200)
+                                .withBodyFile("valid-user-authorized.json")
+                )
+                .willSetStateTo("SESSION-STARTED"));
+
+        stubFor(get(urlEqualTo("/records?sid=123"))
+                .inScenario("SCENARIO-VALID-USER")
+                .whenScenarioStateIs("SESSION-STARTED")
+                .willReturn(
+                        aResponse()
+                                .withHeader("Content-Type","application/json")
+                                .withStatus(200)
+                                .withBodyFile("valid-user-fetched-records.json")
+                )
+                .willSetStateTo("RECORDS-FETCHED"));
 
     }
 }
