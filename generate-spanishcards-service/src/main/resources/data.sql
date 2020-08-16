@@ -32,17 +32,17 @@ values
 ('VERB', 'hacer', 'does', 'do', 'did', 'doing', 'announcement'),
 ('VERB', 'poder', 'can', 'can', 'could', 'can', 'sleep'),
 ('VERB', 'querer', 'want', 'want', 'wanted', 'wanting', 'apple'),
-('VERB', 'vivir', 'lives', 'live', 'lived', 'living', 'here'),
-('VERB', 'caminar', 'walks', 'walk', 'walked', 'walking', 'beach'),
-('VERB', 'comer', 'eats', 'eat', 'ate', 'eating', 'pizza'),
-('VERB', 'creer', 'believes', 'believe', 'believed', 'beleaving', 'announcement'),
 ('VERB', 'saber', 'knows', 'know', 'known', 'knowing', 'book'),
 ('VERB', 'poner', 'puts', 'put', 'put', 'putting', 'book'),
 ('VERB', 'ver', 'sees', 'see', 'saw', 'seeing', 'pizza'),
+('VERB', 'creer', 'believes', 'believe', 'believed', 'believing', 'announcement'),
 ('VERB', 'llegar', 'arrives', 'arrive', 'arrived', 'arriving', 'here'),
 ('VERB', 'pensar', 'thinks', 'think', 'thought', 'thinking', 'more'),
 ('VERB', 'sentir', 'feels', 'feel', 'felt', 'feeling', 'heat'),
-('VERB', 'volver', 'returns', 'return', 'return', 'returning', 'book');
+('VERB', 'volver', 'returns', 'return', 'return', 'returning', 'book'),
+('VERB', 'vivir', 'lives', 'live', 'lived', 'living', 'here'),
+('VERB', 'caminar', 'walks', 'walk', 'walked', 'walking', 'beach'),
+('VERB', 'comer', 'eats', 'eat', 'ate', 'eating', 'pizza');
 
 insert into conjugation
     (id, type, first, second, third, first_plural, second_plural, third_plural)

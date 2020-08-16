@@ -10,6 +10,8 @@
         <module>sample-service</module>
         <module>another-sample-service</module>
         <module>generate-spanishcards-service</module>
+        <module>mocking-service</module>
+        <module>mocking-service-assembly</module>
     </modules>
 
     <properties>
@@ -334,9 +336,11 @@
                                         <tag>${project.version}</tag>
                                     </tags>
                                     <contextDir>${project.basedir}/src/main/docker</contextDir>
+
                                     <assembly>
                                         <descriptorRef>artifact-with-dependencies</descriptorRef>
                                     </assembly>
+
                                 </build>
                             </image>
                         </images>
@@ -354,10 +358,6 @@
             </plugins>
         </pluginManagement>
         <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-dependency-plugin</artifactId>
-            </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>

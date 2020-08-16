@@ -1,10 +1,14 @@
-# Docker Images and Openshift
+# Container based experiments
+
+Caveats
+- Spring boot dependency is imported and bom is not the parent, hence copied most of the plugins from the bom
+
+
+## Run using Redhat CRC; push a docker images to openshift/crc registry
+
 This is a repo on experiments on OpenShift using RedHat's Code Ready Containers
 
 To prepare CRC on ubuntu. Use ubuntuansible repo.
-
-
-## To push a docker images to openshift/crc registry
 1. Create a project eg
  
     ``oc new-project test-sample-app``
@@ -18,5 +22,18 @@ To prepare CRC on ubuntu. Use ubuntuansible repo.
     ``mvn clean install -Plocal``   
     
     
-## Caveats
-- Spring boot dependency is imported and bom is not the parent, hence copied most of the plugins from the bom      
+
+## Run using Docker
+```
+# Run locally
+docker run -it --rm -p 8080:8080 my-project/generate-spanishcards-service
+```
+
+## Run using Docker Compose
+```
+cd docker-compose
+docker-compose stop && docker-compose rm -f && docker-compose up -d
+
+# logs
+docker-compose logs -f
+```      

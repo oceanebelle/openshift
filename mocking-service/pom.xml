@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>openshift-parent</artifactId>
+        <groupId>com.oceanebelle.openshift</groupId>
+        <version>0.0.1-SNAPSHOT</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>mocking-service</artifactId>
+
+
+    <dependencies>
+
+        <dependency>
+            <groupId>com.github.tomakehurst</groupId>
+            <artifactId>wiremock-jre8</artifactId>
+            <version>2.27.0</version>
+
+        </dependency>
+
+        <!-- Standard dependencies -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springdoc</groupId>
+            <artifactId>springdoc-openapi-ui</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+            <version>1.4.194</version>
+        </dependency>
+
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <!-- Use the spring boot way of packaging single jar -->
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>io.fabric8</groupId>
+                <artifactId>docker-maven-plugin</artifactId>
+                <configuration>
+                    <images>
+                        <image>
+                            <name>${docker.image.name}</name>
+                            <build>
+                                <assembly>
+                                    <inline>
+                                        <includeBaseDirectory>false</includeBaseDirectory>
+                                        <dependencySets>
+                                            <dependencySet>
+                                                <!--Include runtime dependencies-->
+                                                <outputDirectory>/</outputDirectory>
+                                                <scope>runtime</scope>
+                                            </dependencySet>
+                                        </dependencySets>
+                                        <fileSets>
+                                            <fileSet>
+                                                <directory>${project.basedir}/src/main/docker/__files</directory>
+                                                <outputDirectory>__files</outputDirectory>
+                                                <filtered>false</filtered>
+                                                <fileMode>755</fileMode>
+                                            </fileSet>
+                                            <fileSet>
+                                                <directory>${project.basedir}/src/main/docker/config</directory>
+                                                <outputDirectory>config</outputDirectory>
+                                                <filtered>true</filtered>
+                                                <fileMode>755</fileMode>
+                                            </fileSet>
+                                        </fileSets>
+                                    </inline>
+                                </assembly>
+                            </build>
+                        </image>
+                    </images>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>

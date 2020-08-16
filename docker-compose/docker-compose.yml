@@ -1,0 +1,19 @@
+version: '3'
+services:
+
+  spanishcards:
+    container_name: spanishcards
+    image: "my-project/generate-spanishcards-service:latest"
+    restart: on-failure
+    ports:
+      - 8080
+
+  mockservice:
+    container_name: mockservice
+    image: "my-project/mocking-service:latest"
+    restart: on-failure
+    ports:
+      - 8090:8080
+
+
+
